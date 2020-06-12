@@ -1,11 +1,24 @@
 public class JD1 {
     public static void main(String[] args) {
-        Printer myInt = s -> System.out.println(s);
-        myInt.printMe("Hello World");
-        myInt.printWithVersion("Hello World!");
+        Printer myPrinter = s -> System.out.println(s);
+        myPrinter.printMe("Hello World");
+        myPrinter.printWithVersion("Hello World!");
         new Thread(() -> 
             System.out.println("Running in " + Thread.currentThread().getName()),
                 "JDThread").start();;
+
+        String test = "test";
+        /*         
+        Local variable test defined in an enclosing scope must be final or effectively final  Java(536871575)
+
+        test = "test-";
+         */
+        myPrinter = new Printer() {
+            public void printMe(String s) {
+                System.out.println(test + s);
+            }
+        };
+        myPrinter.printMe("Hello World");
     }
 
     @FunctionalInterface
@@ -21,4 +34,6 @@ public class JD1 {
             printMe("Version 2.0: " + s);
         };
     }
+
+    
 }
