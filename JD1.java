@@ -1,6 +1,11 @@
+
+import static java.lang.System.out;
+
 public class JD1 {
+
+
     public static void main(String[] args) {
-        Printer myPrinter = s -> System.out.println(s);
+        Printer myPrinter = s -> out.println(s);
         myPrinter.printMe("Hello World");
         myPrinter.printWithVersion("Hello World!");
         new Thread(() -> 
@@ -15,10 +20,26 @@ public class JD1 {
          */
         myPrinter = new Printer() {
             public void printMe(String s) {
-                System.out.println(test + s);
+                out.println(test + s + " [anon]");
             }
         };
-        myPrinter.printMe("Hello World");
+        test(myPrinter);
+
+        myPrinter = s -> out.println(test + s + " [lamda] ");
+        test(myPrinter);
+        myPrinter = JD1::testPrint;
+        test(myPrinter);
+        //test(((Printer)JD1::testPrint(s)));
+        
+    }
+
+
+    private static void testPrint(String s) {
+        out.println(s + " [method]");
+    }
+
+    private static void test(Printer printer) {
+        printer.printMe("Hello from " + printer);
     }
 
     @FunctionalInterface
@@ -34,6 +55,7 @@ public class JD1 {
             printMe("Version 2.0: " + s);
         };
     }
+
 
     
 }
