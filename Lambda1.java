@@ -30,10 +30,11 @@ public class Lambda1 {
 			
 			
 		// You cannot remove braces and leave 'return'
+		/* 
 		Comparator<Employee> byNameLambda4 =
 			(a, b) -> return a.getName().compareTo(b.getName());
 			
-			
+		 */	
 			
 		// Expression with no parameters
 		Runnable r = () -> { System.out.println("A compact Runnable!"); };
