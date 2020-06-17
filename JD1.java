@@ -30,6 +30,9 @@ public class JD1 {
         myPrinter = JD1::testPrint;
         test(myPrinter);
         //test(((Printer)JD1::testPrint(s)));
+
+        for (int i = 0; i++ ; i < 10)
+        
         
     }
 
