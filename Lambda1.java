@@ -53,6 +53,15 @@ public class Lambda1 {
 		// Expression with one parameter
 		Consumer<String> lengthPrinter = 
 				s -> System.out.println(s.length());
+
+		// added by jd
+		Consumer<String> other = 
+				s -> {
+					int i = s.length() + 1;
+					System.out.println(i);
+				};
+
+		other.accept("1");
 						
 	}
 
