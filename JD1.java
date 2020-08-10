@@ -31,7 +31,7 @@ public class JD1 {
         test(myPrinter);
         //test(((Printer)JD1::testPrint(s)));
 
-        for (int i = 0; i++ ; i < 10)
+        //for (int i = 0; i++ ; i < 10)
         
         
     }
