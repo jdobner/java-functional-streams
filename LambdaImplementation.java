@@ -44,14 +44,26 @@ public class LambdaImplementation {
 
 	private int id = 1;
 	public void foo() {
+
+		System.out.println("\nInstance non-capturing lambda:");
+		
+		for (int i=0; i<5; i++) {
+			// this-capturing lambda, many instances!
+			Consumer<String> myPrinter =
+					msg -> System.out.println("Consuming " + msg);
+			
+			myPrinter.accept(myPrinter.toString());
+		}
+
+
 		System.out.println("\nInstance-capturing lambda:");
 		
 		for (int i=0; i<5; i++) {
 			// this-capturing lambda, many instances!
-			Consumer<String> myPrinter4 =
+			Consumer<String> myPrinter =
 					msg -> System.out.println("Consuming " + msg + ", " + id);
 			
-			myPrinter4.accept(myPrinter4.toString());
+			myPrinter.accept(myPrinter.toString());
 		}
 	}
 

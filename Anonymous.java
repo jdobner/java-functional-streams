@@ -1,5 +1,3 @@
-package java.functional.streams;
-
 public class Anonymous {
     
     public static void main(String[] args) {
@@ -8,7 +6,6 @@ public class Anonymous {
 
     void test() {
         var a = 1;
-        a += 1;
 
         new Runnable() {
             public void run() {

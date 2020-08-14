@@ -6,7 +6,17 @@ public class MethodReferences {
 	interface ThreadSupplier {
 		Thread giveMeAThread();
 	}
+
+	@FunctionalInterface
+	interface VoidInterface {
+		void doit(String s);
+	}
 	
+	interface MySupplier<R, P> {
+		R obtain(P arg);
+	}
+
+
 	
 	
 	@SuppressWarnings("unused")
@@ -16,27 +26,8 @@ public class MethodReferences {
 		// Static method
 		Supplier<Thread> s1 = Thread::currentThread;
 		
-		
 		// Nothing special about 'Supplier'...
 		ThreadSupplier ts = Thread::currentThread;
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		// Instance method (instance specified)
@@ -48,41 +39,13 @@ public class MethodReferences {
 		System.out.println(s2.get());
 		
 		
-		
-		
-		
 		// A common instance method (instance specified)
 		Consumer<String> c1 = System.out::println;
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		// An instance method (instance not specified)
 		Function<Employee,Integer> f1 = Employee::getSalary;
 		
 		Integer frankSalary = f1.apply(frank);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		// A useful application: building a comparator based on a field
@@ -91,19 +54,19 @@ public class MethodReferences {
 		// where U supports natural ordering (i.e., Comparable)
 		
 		Comparator<Employee> byName = 
-				Comparator.comparing(Employee::getName);		
+				Comparator.comparing(Employee::getName);	
+				
+				
+		VoidInterface vi = System.out::println;
+		vi.doit("hi");
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		var cs = new Supplier<Comparator<String>>() {
+			public Comparator<String> get() {
+				return Comparator.reverseOrder();
+			}
+		};
+
+
 		main2();
 	}		
 		
